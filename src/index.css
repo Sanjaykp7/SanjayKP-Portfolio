@@ -2,41 +2,59 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Glassmorphism Portfolio Design System */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Dark Glassmorphism Theme */
+    --background: 240 10% 4%;
+    --foreground: 0 0% 98%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 240 10% 8%;
+    --card-foreground: 0 0% 95%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 240 10% 6%;
+    --popover-foreground: 0 0% 98%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 266 100% 70%;
+    --primary-foreground: 0 0% 98%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 195 100% 60%;
+    --secondary-foreground: 0 0% 98%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 240 5% 20%;
+    --muted-foreground: 240 5% 65%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 271 81% 56%;
+    --accent-foreground: 0 0% 98%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 240 15% 15%;
+    --input: 240 15% 15%;
+    --ring: 266 100% 70%;
 
-    --radius: 0.5rem;
+    --radius: 1rem;
+
+    /* Glassmorphism Effects */
+    --glass-bg: 240 10% 15% / 0.1;
+    --glass-border: 240 30% 50% / 0.2;
+    --glass-blur: blur(20px);
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(266 100% 70% / 0.8), hsl(195 100% 60% / 0.8));
+    --gradient-background: linear-gradient(135deg, hsl(240 10% 4%), hsl(240 15% 8%), hsl(245 20% 6%));
+    --gradient-glass: linear-gradient(135deg, hsl(240 10% 15% / 0.1), hsl(240 30% 25% / 0.05));
+    
+    /* Shadows */
+    --shadow-glass: 0 8px 32px 0 hsl(240 10% 5% / 0.4);
+    --shadow-neon: 0 0 30px hsl(266 100% 70% / 0.3);
+    --shadow-neon-secondary: 0 0 30px hsl(195 100% 60% / 0.3);
+
+    /* Animations */
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
     --sidebar-background: 0 0% 98%;
 
@@ -101,5 +119,67 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    background: var(--gradient-background);
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  /* Glass Card Effects */
+  .glass-card {
+    @apply backdrop-blur-xl bg-[hsl(var(--glass-bg))] border-[hsl(var(--glass-border))];
+    @apply border rounded-2xl shadow-[var(--shadow-glass)] transition-[var(--transition-smooth)];
+    background: var(--gradient-glass);
+  }
+  
+  .glass-card:hover {
+    @apply transform scale-105;
+    box-shadow: var(--shadow-glass), var(--shadow-neon);
+  }
+
+  /* Neon Text Effects */
+  .neon-text {
+    @apply bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent;
+    text-shadow: 0 0 30px hsl(var(--primary) / 0.5);
+  }
+
+  .neon-glow {
+    @apply transition-[var(--transition-smooth)];
+  }
+  
+  .neon-glow:hover {
+    box-shadow: var(--shadow-neon);
+    transform: translateY(-2px);
+  }
+
+  /* Typing Animation */
+  .typing-cursor::after {
+    content: "|";
+    @apply text-primary animate-pulse;
+  }
+
+  /* Smooth Scroll */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Contact Icons */
+  .contact-icon {
+    @apply p-3 rounded-full glass-card neon-glow;
+    @apply flex items-center justify-center text-primary;
+  }
+  
+  .contact-icon:hover {
+    @apply text-secondary;
+    box-shadow: var(--shadow-neon-secondary);
+  }
+
+  /* Section Fade In */
+  .fade-in {
+    @apply opacity-0 translate-y-8 transition-all duration-1000;
+  }
+  
+  .fade-in.visible {
+    @apply opacity-100 translate-y-0;
   }
 }
