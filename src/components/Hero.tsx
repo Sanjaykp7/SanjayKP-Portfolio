@@ -51,10 +51,14 @@ const Hero = () => {
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <button className="glass-card neon-glow px-8 py-4 rounded-full text-lg font-semibold bg-gradient-to-r from-primary to-secondary text-white flex items-center gap-3 justify-center">
+                <a 
+                  href="/Sanjay_KP_Java_Web_Dev.pdf" 
+                  download="Sanjay_KP_Java_Web_Dev.pdf"
+                  className="glass-card neon-glow px-8 py-4 rounded-full text-lg font-semibold bg-gradient-to-r from-primary to-secondary text-white flex items-center gap-3 justify-center no-underline"
+                >
                   <Download size={24} />
                   Download Resume
-                </button>
+                </a>
                 
                 <button 
                   onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
