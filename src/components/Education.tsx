@@ -32,7 +32,7 @@ const Education = () => {
                   <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start text-muted-foreground">
                     <div className="flex items-center gap-2">
                       <Calendar size={20} />
-                      <span>2020 - 2024</span>
+                      <span>2021-2025</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <MapPin size={20} />
