@@ -1,6 +1,6 @@
 import { Download } from 'lucide-react';
 import TypingAnimation from './TypingAnimation';
-import profileImage from '@/assets/sanjay-profile.jpg';
+import profileImage from '@/assets/sanjay-profile.png';
 
 const Hero = () => {
   const typingPhrases = [
