@@ -1,4 +1,4 @@
-import { Mail, Phone, Linkedin, Github, MapPin, Send } from 'lucide-react';
+import { Mail, Phone, Linkedin, Github, MapPin } from 'lucide-react';
 
 const Contact = () => {
   const contactInfo = [
@@ -36,10 +36,8 @@ const Contact = () => {
             Get In Touch
           </h2>
           
-          <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-              {/* Contact Information */}
-              <div className="space-y-8">
+          <div className="max-w-4xl mx-auto">
+            <div className="space-y-8">
                 <div className="glass-card p-8 rounded-3xl">
                   <h3 className="text-2xl font-bold text-foreground mb-6">Let's Connect</h3>
                   <p className="text-muted-foreground mb-8 leading-relaxed">
@@ -80,65 +78,6 @@ const Contact = () => {
                   <p className="text-sm text-muted-foreground mt-2">Open to relocation</p>
                 </div>
               </div>
-              
-              {/* Contact Form */}
-              <div className="glass-card p-8 rounded-3xl">
-                <h3 className="text-2xl font-bold text-foreground mb-6">Send a Message</h3>
-                <form className="space-y-6">
-                  <div>
-                    <label className="block text-sm font-medium text-foreground mb-2">
-                      Your Name
-                    </label>
-                    <input
-                      type="text"
-                      className="w-full px-4 py-3 bg-background/50 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all duration-300"
-                      placeholder="Enter your name"
-                    />
-                  </div>
-                  
-                  <div>
-                    <label className="block text-sm font-medium text-foreground mb-2">
-                      Email Address
-                    </label>
-                    <input
-                      type="email"
-                      className="w-full px-4 py-3 bg-background/50 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all duration-300"
-                      placeholder="Enter your email"
-                    />
-                  </div>
-                  
-                  <div>
-                    <label className="block text-sm font-medium text-foreground mb-2">
-                      Subject
-                    </label>
-                    <input
-                      type="text"
-                      className="w-full px-4 py-3 bg-background/50 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all duration-300"
-                      placeholder="What's this about?"
-                    />
-                  </div>
-                  
-                  <div>
-                    <label className="block text-sm font-medium text-foreground mb-2">
-                      Message
-                    </label>
-                    <textarea
-                      rows={5}
-                      className="w-full px-4 py-3 bg-background/50 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all duration-300 resize-none"
-                      placeholder="Tell me about your project or opportunity..."
-                    ></textarea>
-                  </div>
-                  
-                  <button
-                    type="submit"
-                    className="w-full glass-card neon-glow px-8 py-4 rounded-full text-lg font-semibold bg-gradient-to-r from-primary to-secondary text-white flex items-center justify-center gap-3 hover:scale-105 transition-transform duration-300"
-                  >
-                    <Send size={24} />
-                    Send Message
-                  </button>
-                </form>
-              </div>
-            </div>
           </div>
         </div>
       </div>
