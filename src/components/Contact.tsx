@@ -76,7 +76,7 @@ const Contact = () => {
                 <div className="glass-card p-6 rounded-2xl text-center">
                   <MapPin size={32} className="text-primary mx-auto mb-4" />
                   <h4 className="text-lg font-semibold text-foreground mb-2">Location</h4>
-                  <p className="text-muted-foreground">Karnataka, India</p>
+                  <p className="text-muted-foreground">Bangalore, Karnataka, India</p>
                   <p className="text-sm text-muted-foreground mt-2">Open to relocation</p>
                 </div>
               </div>
