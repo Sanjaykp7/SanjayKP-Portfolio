@@ -1,4 +1,4 @@
-import { ExternalLink, Github } from 'lucide-react';
+
 
 const Projects = () => {
   const projects = [
@@ -74,17 +74,6 @@ const Projects = () => {
                         </span>
                       ))}
                     </div>
-                  </div>
-                  
-                  <div className="flex gap-4 pt-4">
-                    <button className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary to-secondary text-white rounded-full hover:scale-105 transition-transform duration-300">
-                      <Github size={20} />
-                      Source Code
-                    </button>
-                    <button className="flex items-center gap-2 px-6 py-3 glass-card border border-primary text-primary rounded-full hover:bg-primary hover:text-white transition-all duration-300">
-                      <ExternalLink size={20} />
-                      Live Demo
-                    </button>
                   </div>
                 </div>
               </div>
