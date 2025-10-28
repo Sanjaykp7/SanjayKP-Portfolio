@@ -22,11 +22,6 @@ const Skills = () => {
       icon: '🎓'
     },
     {
-      title: 'Azure AI Fundamentals',
-      provider: 'Microsoft',
-      icon: '☁️'
-    },
-    {
       title: 'Web Programming',
       provider: 'Ethnotech Academic Solutions',
       icon: '💻'
@@ -40,11 +35,6 @@ const Skills = () => {
       title: 'SQL and Relational Databases 101',
       provider: 'IBM Developer Skills Network',
       icon: '🗂️'
-    },
-    {
-      title: 'MySQL HeatWave Implementation Associate',
-      provider: 'Oracle',
-      icon: '🔥'
     }
   ];
 
@@ -75,8 +65,7 @@ const Skills = () => {
       y: 0,
       scale: 1,
       transition: {
-        duration: 0.6,
-        ease: "easeOut"
+        duration: 0.6
       }
     }
   };
