@@ -1,3 +1,5 @@
+import { motion } from 'framer-motion';
+
 const Skills = () => {
   const skills = [
     { name: 'HTML', category: 'Frontend', level: 90, icon: '🎨' },
@@ -56,33 +58,95 @@ const Skills = () => {
     }
   };
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 50, scale: 0.9 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 0.6,
+        ease: [0.25, 0.46, 0.45, 0.94]
+      }
+    }
+  };
+
   return (
     <section id="skills" className="py-20 px-6">
       <div className="container mx-auto">
-        <div className="fade-in">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 neon-text">
+        <motion.div 
+          className="fade-in"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+        >
+          <motion.h2 
+            className="text-4xl md:text-5xl font-bold text-center mb-16 neon-text"
+            initial={{ opacity: 0, y: -30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
             Skills & Certifications
-          </h2>
+          </motion.h2>
           
           {/* Skills Grid */}
           <div className="mb-16">
-            <h3 className="text-2xl font-semibold text-center mb-12 text-secondary">Technical Skills</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <motion.h3 
+              className="text-2xl font-semibold text-center mb-12 text-secondary"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+            >
+              Technical Skills
+            </motion.h3>
+            <motion.div 
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto"
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-50px" }}
+            >
               {skills.map((skill, index) => (
-                <div 
+                <motion.div 
                   key={skill.name}
-                  className="glass-card p-8 rounded-3xl group hover:scale-105 hover:shadow-2xl transition-all duration-500 relative overflow-hidden"
-                  style={{ animationDelay: `${index * 0.05}s` }}
+                  className="glass-card p-8 rounded-3xl group relative overflow-hidden"
+                  variants={cardVariants}
+                  whileHover={{ 
+                    scale: 1.05,
+                    rotateY: 5,
+                    transition: { duration: 0.3 }
+                  }}
                 >
                   {/* Background Gradient Effect */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${getCategoryColor(skill.category)} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
+                  <motion.div 
+                    className={`absolute inset-0 bg-gradient-to-br ${getCategoryColor(skill.category)}`}
+                    initial={{ opacity: 0 }}
+                    whileHover={{ opacity: 0.1 }}
+                    transition={{ duration: 0.3 }}
+                  />
                   
                   <div className="relative z-10">
                     {/* Icon and Name */}
                     <div className="flex items-center gap-4 mb-6">
-                      <div className={`text-5xl transform group-hover:scale-110 transition-transform duration-300`}>
+                      <motion.div 
+                        className="text-5xl"
+                        whileHover={{ scale: 1.2, rotate: 360 }}
+                        transition={{ duration: 0.5 }}
+                      >
                         {skill.icon}
-                      </div>
+                      </motion.div>
                       <div className="flex-1">
                         <h4 className="font-bold text-xl text-foreground group-hover:text-primary transition-colors duration-300">
                           {skill.name}
@@ -98,13 +162,17 @@ const Skills = () => {
                         <span className="font-semibold text-secondary">{skill.level}%</span>
                       </div>
                       <div className="h-3 bg-muted/30 rounded-full overflow-hidden">
-                        <div 
-                          className={`h-full bg-gradient-to-r ${getCategoryColor(skill.category)} rounded-full transition-all duration-1000 ease-out group-hover:shadow-lg`}
-                          style={{ 
-                            width: `${skill.level}%`,
-                            transitionDelay: `${index * 0.1}s`
+                        <motion.div 
+                          className={`h-full bg-gradient-to-r ${getCategoryColor(skill.category)} rounded-full`}
+                          initial={{ width: 0 }}
+                          whileInView={{ width: `${skill.level}%` }}
+                          viewport={{ once: true }}
+                          transition={{ 
+                            duration: 1.5,
+                            delay: index * 0.1,
+                            ease: "easeOut"
                           }}
-                        ></div>
+                        />
                       </div>
                     </div>
                   </div>
@@ -115,25 +183,59 @@ const Skills = () => {
 
           {/* Certifications Grid */}
           <div>
-            <h3 className="text-2xl font-semibold text-center mb-12 text-secondary">Certifications</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <motion.h3 
+              className="text-2xl font-semibold text-center mb-12 text-secondary"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+            >
+              Certifications
+            </motion.h3>
+            <motion.div 
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto"
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-50px" }}
+            >
               {certifications.map((cert, index) => (
-                <div 
+                <motion.div 
                   key={cert.title}
-                  className="glass-card p-8 rounded-3xl group hover:scale-105 hover:shadow-2xl transition-all duration-500 relative overflow-hidden cursor-pointer"
-                  style={{ animationDelay: `${index * 0.05}s` }}
+                  className="glass-card p-8 rounded-3xl group relative overflow-hidden cursor-pointer"
+                  variants={cardVariants}
+                  whileHover={{ 
+                    scale: 1.05,
+                    rotateY: -5,
+                    transition: { duration: 0.3 }
+                  }}
                 >
                   {/* Animated Background */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <motion.div 
+                    className="absolute inset-0 bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10"
+                    initial={{ opacity: 0 }}
+                    whileHover={{ opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                  />
                   
                   <div className="relative z-10">
                     {/* Icon */}
-                    <div className="text-6xl mb-6 transform group-hover:scale-110 group-hover:rotate-12 transition-all duration-500">
+                    <motion.div 
+                      className="text-6xl mb-6"
+                      whileHover={{ scale: 1.2, rotate: 12 }}
+                      transition={{ duration: 0.4 }}
+                    >
                       {cert.icon}
-                    </div>
+                    </motion.div>
                     
                     {/* Animated Gradient Line */}
-                    <div className="h-1 bg-gradient-to-r from-primary via-secondary to-accent rounded-full mb-6 transform origin-left group-hover:scale-x-110 transition-transform duration-500"></div>
+                    <motion.div 
+                      className="h-1 bg-gradient-to-r from-primary via-secondary to-accent rounded-full mb-6"
+                      initial={{ scaleX: 1 }}
+                      whileHover={{ scaleX: 1.1 }}
+                      style={{ originX: 0 }}
+                      transition={{ duration: 0.3 }}
+                    />
                     
                     {/* Content */}
                     <h4 className="font-bold text-lg text-foreground mb-3 leading-tight group-hover:text-primary transition-colors duration-300">
