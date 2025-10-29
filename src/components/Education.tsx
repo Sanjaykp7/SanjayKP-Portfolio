@@ -1,6 +1,49 @@
-import { GraduationCap, Calendar, MapPin } from 'lucide-react';
+import { GraduationCap, School, BookOpen } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
 
 const Education = () => {
+  const educationData = [
+    {
+      id: 1,
+      icon: School,
+      degree: 'SSLC',
+      institution: 'D.V.S English Medium School',
+      year: '2019',
+      score: '83.20%',
+      location: 'Chitradurga, Karnataka, India',
+      gradient: 'from-blue-500 to-cyan-500'
+    },
+    {
+      id: 2,
+      icon: BookOpen,
+      degree: 'PUC',
+      institution: 'Sri Siddeshwara PU College',
+      year: '2019 – 2021',
+      score: '77.5%',
+      location: 'Davanagere, Karnataka, India',
+      gradient: 'from-purple-500 to-pink-500'
+    },
+    {
+      id: 3,
+      icon: GraduationCap,
+      degree: 'Bachelor of Engineering',
+      field: 'Computer Science Engineering',
+      institution: 'Srinivas Institute of Technology',
+      year: '2021 – 2025',
+      score: 'CGPA: 7.3',
+      location: 'Mangaluru, Karnataka, India',
+      gradient: 'from-primary to-secondary',
+      coursework: [
+        'Data Structures & Algorithms',
+        'Object-Oriented Programming',
+        'Database Management Systems',
+        'Web Technologies',
+        'Software Engineering',
+        'Computer Networks'
+      ]
+    }
+  ];
+
   return (
     <section id="education" className="py-20 px-6">
       <div className="container mx-auto">
@@ -9,64 +52,83 @@ const Education = () => {
             Education
           </h2>
           
-          <div className="max-w-4xl mx-auto space-y-8">
-            {/* Bachelor's Degree */}
-            <div className="glass-card p-8 md:p-12 rounded-3xl">
-              <div className="flex flex-col md:flex-row items-center gap-8">
-                <div className="flex-shrink-0">
-                  <div className="w-20 h-20 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center">
-                    <GraduationCap size={40} className="text-white" />
-                  </div>
-                </div>
-                
-                <div className="flex-1 text-center md:text-left">
-                  <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
-                    Bachelor of Engineering
-                  </h3>
-                  <h4 className="text-xl text-primary font-semibold mb-4">
-                    Computer Science Engineering
-                  </h4>
-                  <p className="text-lg text-secondary mb-4">
-                    Srinivas Institute of Technology
-                  </p>
-                  
-                  <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start text-muted-foreground">
-                    <div className="flex items-center gap-2">
-                      <Calendar size={20} />
-                      <span>2021-2025</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <MapPin size={20} />
-                      <span>Karnataka, India</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
+          <div className="max-w-5xl mx-auto">
+            {/* Timeline Container */}
+            <div className="relative">
+              {/* Vertical Line */}
+              <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-secondary to-accent transform md:-translate-x-1/2"></div>
               
-              <div className="mt-8 pt-8 border-t border-border">
-                <h4 className="text-lg font-semibold text-secondary mb-4 text-center md:text-left">
-                  Relevant Coursework:
-                </h4>
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                  {[
-                    'Data Structures & Algorithms',
-                    'Object-Oriented Programming',
-                    'Database Management Systems',
-                    'Web Technologies',
-                    'Software Engineering',
-                    'Computer Networks'
-                  ].map((course) => (
-                    <div 
-                      key={course}
-                      className="glass-card p-3 rounded-lg text-center text-sm text-muted-foreground hover:text-foreground transition-colors duration-300"
-                    >
-                      {course}
+              {/* Timeline Items */}
+              <div className="space-y-12">
+                {educationData.map((edu, index) => {
+                  const Icon = edu.icon;
+                  const isLeft = index % 2 === 0;
+                  
+                  return (
+                    <div key={edu.id} className={`relative flex items-center ${isLeft ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
+                      {/* Timeline Dot */}
+                      <div className="absolute left-8 md:left-1/2 w-4 h-4 bg-gradient-to-r from-primary to-secondary rounded-full transform md:-translate-x-1/2 z-10 ring-4 ring-background"></div>
+                      
+                      {/* Content Card */}
+                      <div className={`ml-20 md:ml-0 md:w-[calc(50%-3rem)] ${isLeft ? 'md:pr-12' : 'md:pl-12'}`}>
+                        <div className="glass-card p-6 md:p-8 rounded-3xl hover:shadow-[0_0_30px_rgba(var(--primary),0.3)] transition-all duration-300">
+                          {/* Icon and Year */}
+                          <div className="flex items-center justify-between mb-4">
+                            <div className={`w-16 h-16 bg-gradient-to-r ${edu.gradient} rounded-full flex items-center justify-center`}>
+                              <Icon size={32} className="text-white" />
+                            </div>
+                            <Badge variant="secondary" className="text-sm font-semibold">
+                              {edu.year}
+                            </Badge>
+                          </div>
+                          
+                          {/* Content */}
+                          <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
+                            {edu.degree}
+                          </h3>
+                          
+                          {edu.field && (
+                            <h4 className="text-lg text-primary font-semibold mb-3">
+                              {edu.field}
+                            </h4>
+                          )}
+                          
+                          <p className="text-lg text-secondary mb-3">
+                            {edu.institution}
+                          </p>
+                          
+                          <div className="flex flex-wrap items-center gap-3 text-muted-foreground mb-3">
+                            <Badge variant="outline" className="bg-gradient-to-r from-primary/10 to-secondary/10">
+                              {edu.score}
+                            </Badge>
+                            <span className="text-sm">{edu.location}</span>
+                          </div>
+                          
+                          {/* Coursework for BE */}
+                          {edu.coursework && (
+                            <div className="mt-6 pt-6 border-t border-border">
+                              <h4 className="text-sm font-semibold text-secondary mb-3">
+                                Relevant Coursework:
+                              </h4>
+                              <div className="grid grid-cols-2 gap-2">
+                                {edu.coursework.map((course) => (
+                                  <div 
+                                    key={course}
+                                    className="glass-card p-2 rounded-lg text-xs text-muted-foreground hover:text-foreground transition-colors duration-300"
+                                  >
+                                    {course}
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      </div>
                     </div>
-                  ))}
-                </div>
+                  );
+                })}
               </div>
             </div>
-
           </div>
         </div>
       </div>
