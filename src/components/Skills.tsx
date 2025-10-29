@@ -1,4 +1,8 @@
 import { motion } from 'framer-motion';
+import certWebProgramming from '@/assets/cert-web-programming.jpg';
+import certJavaScript from '@/assets/cert-javascript.png';
+import certSQL from '@/assets/cert-sql.jpg';
+import certFullStack from '@/assets/cert-fullstack.jpg';
 
 const Skills = () => {
   const skills = [
@@ -17,24 +21,28 @@ const Skills = () => {
 
   const certifications = [
     {
-      title: 'Full Stack Developer',
-      provider: 'Samagra Technologies',
-      icon: '🎓'
-    },
-    {
       title: 'Web Programming',
       provider: 'Ethnotech Academic Solutions',
-      icon: '💻'
+      year: '2023',
+      image: certWebProgramming
     },
     {
       title: 'Fundamentals of JavaScript',
       provider: 'IBM Developer Skills Network',
-      icon: '📜'
+      year: '2025',
+      image: certJavaScript
     },
     {
       title: 'SQL and Relational Databases 101',
       provider: 'IBM Developer Skills Network',
-      icon: '🗂️'
+      year: '2025',
+      image: certSQL
+    },
+    {
+      title: 'Full Stack Developer',
+      provider: 'Samagra Technologies',
+      year: '2025',
+      image: certFullStack
     }
   ];
 
@@ -182,7 +190,7 @@ const Skills = () => {
               Certifications
             </motion.h3>
             <motion.div 
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto"
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto"
               variants={containerVariants}
               initial="hidden"
               whileInView="visible"
@@ -191,49 +199,55 @@ const Skills = () => {
               {certifications.map((cert, index) => (
                 <motion.div 
                   key={cert.title}
-                  className="glass-card p-8 rounded-3xl group relative overflow-hidden cursor-pointer"
+                  className="glass-card rounded-3xl group relative overflow-hidden cursor-pointer flex flex-col"
                   variants={cardVariants}
                   whileHover={{ 
                     scale: 1.05,
-                    rotateY: -5,
+                    y: -10,
                     transition: { duration: 0.3 }
                   }}
                 >
-                  {/* Animated Background */}
+                  {/* Animated Border Glow */}
                   <motion.div 
-                    className="absolute inset-0 bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10"
-                    initial={{ opacity: 0 }}
-                    whileHover={{ opacity: 1 }}
+                    className="absolute inset-0 bg-gradient-to-br from-primary via-secondary to-accent opacity-0 group-hover:opacity-20 rounded-3xl"
                     transition={{ duration: 0.3 }}
                   />
                   
-                  <div className="relative z-10">
-                    {/* Icon */}
-                    <motion.div 
-                      className="text-6xl mb-6"
-                      whileHover={{ scale: 1.2, rotate: 12 }}
-                      transition={{ duration: 0.4 }}
-                    >
-                      {cert.icon}
-                    </motion.div>
-                    
+                  {/* Image Container - 40% */}
+                  <div className="relative h-48 overflow-hidden rounded-t-3xl">
+                    <motion.img 
+                      src={cert.image}
+                      alt={cert.title}
+                      className="w-full h-full object-cover"
+                      whileHover={{ scale: 1.1 }}
+                      transition={{ duration: 0.5 }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                  </div>
+                  
+                  {/* Content Container - 60% */}
+                  <div className="relative z-10 p-6 flex-1 flex flex-col justify-between">
                     {/* Animated Gradient Line */}
                     <motion.div 
-                      className="h-1 bg-gradient-to-r from-primary via-secondary to-accent rounded-full mb-6"
-                      initial={{ scaleX: 1 }}
-                      whileHover={{ scaleX: 1.1 }}
+                      className="h-1 bg-gradient-to-r from-primary via-secondary to-accent rounded-full mb-4"
+                      initial={{ scaleX: 0 }}
+                      whileInView={{ scaleX: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: index * 0.1 }}
                       style={{ originX: 0 }}
-                      transition={{ duration: 0.3 }}
                     />
                     
                     {/* Content */}
-                    <h4 className="font-bold text-lg text-foreground mb-3 leading-tight group-hover:text-primary transition-colors duration-300">
-                      {cert.title}
-                    </h4>
-                    <p className="text-muted-foreground text-sm font-medium">{cert.provider}</p>
+                    <div className="flex-1">
+                      <h4 className="font-bold text-base text-foreground mb-2 leading-tight group-hover:text-primary transition-colors duration-300">
+                        {cert.title}
+                      </h4>
+                      <p className="text-muted-foreground text-xs font-medium mb-2">{cert.provider}</p>
+                      <p className="text-secondary text-sm font-semibold">Year: {cert.year}</p>
+                    </div>
                     
                     {/* Verification Badge */}
-                    <div className="mt-4 inline-flex items-center gap-2 px-3 py-1 bg-primary/10 border border-primary/20 rounded-full text-xs text-primary">
+                    <div className="mt-4 inline-flex items-center gap-2 px-3 py-1 bg-primary/10 border border-primary/20 rounded-full text-xs text-primary self-start">
                       <span className="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
                       Verified
                     </div>
