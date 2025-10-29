@@ -67,40 +67,6 @@ const Education = () => {
               </div>
             </div>
 
-            {/* Tap Academy Training */}
-            <div className="glass-card p-8 md:p-12 rounded-3xl">
-              <div className="flex flex-col md:flex-row items-center gap-8">
-                <div className="flex-shrink-0">
-                  <div className="w-20 h-20 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center">
-                    <GraduationCap size={40} className="text-white" />
-                  </div>
-                </div>
-                
-                <div className="flex-1 text-center md:text-left">
-                  <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
-                    Tap Academy
-                  </h3>
-                  <h4 className="text-xl text-primary font-semibold mb-4">
-                    Full Stack Java Web Development (6 Months)
-                  </h4>
-                  
-                  <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start text-muted-foreground mb-6">
-                    <div className="flex items-center gap-2">
-                      <MapPin size={20} />
-                      <span>Bengaluru</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Calendar size={20} />
-                      <span>Ongoing Training</span>
-                    </div>
-                  </div>
-                  
-                  <p className="text-muted-foreground leading-relaxed">
-                    Mastering Core Java, Advanced Java (JDBC, JSP/Servlets), Spring, Hibernate, MySQL, and Frontend technologies (HTML, CSS, JavaScript). Hands-on practice with OOPs, Collections, Exception Handling, Multithreading, and Java 8 (Lambdas, Stream API). Built mini-projects integrating backend & database with responsive UI design.
-                  </p>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>

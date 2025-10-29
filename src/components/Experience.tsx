@@ -88,6 +88,44 @@ const Experience = () => {
                 </button>
               </div>
             </div>
+
+            {/* Tap Academy Training */}
+            <div className="glass-card p-8 md:p-12 rounded-3xl">
+              <div className="w-20 h-20 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center mx-auto mb-8">
+                <Briefcase size={40} className="text-white" />
+              </div>
+              
+              <h3 className="text-3xl md:text-4xl font-bold text-foreground mb-4 text-center">
+                Full Stack Java Developer Training – Tap Academy
+              </h3>
+              
+              <p className="text-xl text-secondary mb-8 text-center">
+                Bengaluru • 6-Month Intensive Program
+              </p>
+              
+              <div className="space-y-4 text-lg text-muted-foreground">
+                <div className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-gradient-to-r from-orange-500 to-red-500 rounded-full mt-2 flex-shrink-0"></div>
+                  <p>Mastered Core Java, Advanced Java (JDBC, Servlets, JSP), Spring, Hibernate, and MySQL</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-gradient-to-r from-orange-500 to-red-500 rounded-full mt-2 flex-shrink-0"></div>
+                  <p>Hands-on exposure to OOP, Collections, Multithreading, and Java 8 features</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-gradient-to-r from-orange-500 to-red-500 rounded-full mt-2 flex-shrink-0"></div>
+                  <p>Built full-stack projects with database integration and RESTful APIs</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-gradient-to-r from-orange-500 to-red-500 rounded-full mt-2 flex-shrink-0"></div>
+                  <p>Gained experience in responsive UI development using HTML, CSS, and JavaScript</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-gradient-to-r from-orange-500 to-red-500 rounded-full mt-2 flex-shrink-0"></div>
+                  <p>Followed SDLC practices and participated in real-world style project building</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

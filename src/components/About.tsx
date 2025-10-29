@@ -27,7 +27,7 @@ const About = () => {
                 </div>
                 
                 <div className="text-center glass-card p-6 rounded-2xl hover:scale-105 transition-transform duration-300">
-                  <div className="text-3xl font-bold neon-text mb-2">6+</div>
+                  <div className="text-3xl font-bold neon-text mb-2">4+</div>
                   <div className="text-muted-foreground">Certifications</div>
                 </div>
                 
