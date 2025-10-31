@@ -1,4 +1,4 @@
-
+import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
 
 const Projects = () => {
   const projects = [
@@ -36,47 +36,54 @@ const Projects = () => {
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
             {projects.map((project, index) => (
-              <div 
-                key={project.title}
-                className="glass-card p-8 rounded-3xl group hover:scale-105 transition-all duration-300"
-                style={{ animationDelay: `${index * 0.2}s` }}
-              >
-                <div className="space-y-6">
-                  <h3 className="text-2xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">
+              <CardContainer key={project.title} className="inter-var">
+                <CardBody className="glass-card relative group/card w-auto sm:w-[30rem] h-auto rounded-3xl p-8 border border-primary/20">
+                  <CardItem
+                    translateZ="50"
+                    className="text-2xl font-bold text-foreground"
+                  >
                     {project.title}
-                  </h3>
+                  </CardItem>
                   
-                  <p className="text-muted-foreground leading-relaxed">
+                  <CardItem
+                    as="p"
+                    translateZ="60"
+                    className="text-muted-foreground leading-relaxed mt-4 max-w-sm"
+                  >
                     {project.description}
-                  </p>
+                  </CardItem>
                   
-                  <div>
-                    <h4 className="text-lg font-semibold text-secondary mb-3">Key Features:</h4>
-                    <ul className="space-y-2">
-                      {project.features.map((feature, featureIndex) => (
-                        <li key={featureIndex} className="flex items-center text-muted-foreground">
-                          <div className="w-2 h-2 bg-gradient-to-r from-primary to-secondary rounded-full mr-3"></div>
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  
-                  <div>
-                    <h4 className="text-lg font-semibold text-secondary mb-3">Technologies Used:</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {project.technologies.map((tech, techIndex) => (
-                        <span 
-                          key={techIndex}
-                          className="px-3 py-1 bg-gradient-to-r from-primary/20 to-secondary/20 border border-primary/30 rounded-full text-sm text-foreground"
-                        >
-                          {tech}
-                        </span>
-                      ))}
+                  <CardItem translateZ="80" className="w-full mt-6">
+                    <div>
+                      <h4 className="text-lg font-semibold text-secondary mb-3">Key Features:</h4>
+                      <ul className="space-y-2">
+                        {project.features.map((feature, featureIndex) => (
+                          <li key={featureIndex} className="flex items-center text-muted-foreground">
+                            <div className="w-2 h-2 bg-gradient-to-r from-primary to-secondary rounded-full mr-3"></div>
+                            {feature}
+                          </li>
+                        ))}
+                      </ul>
                     </div>
-                  </div>
-                </div>
-              </div>
+                  </CardItem>
+                  
+                  <CardItem translateZ="100" className="w-full mt-6">
+                    <div>
+                      <h4 className="text-lg font-semibold text-secondary mb-3">Technologies Used:</h4>
+                      <div className="flex flex-wrap gap-2">
+                        {project.technologies.map((tech, techIndex) => (
+                          <span 
+                            key={techIndex}
+                            className="px-3 py-1 bg-gradient-to-r from-primary/20 to-secondary/20 border border-primary/30 rounded-full text-sm text-foreground"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </CardItem>
+                </CardBody>
+              </CardContainer>
             ))}
           </div>
         </div>
