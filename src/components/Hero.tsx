@@ -2,6 +2,7 @@ import { Download } from 'lucide-react';
 import { motion } from 'framer-motion';
 import TypingAnimation from './TypingAnimation';
 import profileImage from '@/assets/sanjay-profile.png';
+import { HoverBorderGradient } from '@/components/ui/hover-border-gradient';
 
 const Hero = () => {
   const typingPhrases = [
@@ -133,25 +134,25 @@ const Hero = () => {
                 className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
                 variants={itemVariants}
               >
-                <motion.a 
-                  href="/Sanjay_KP_Java_Web_Dev.pdf" 
+                <HoverBorderGradient
+                  as="a"
+                  href="/Sanjay_KP_Java_Web_Dev.pdf"
                   download="Sanjay_KP_Java_Web_Dev.pdf"
-                  className="glass-card neon-glow px-8 py-4 rounded-full text-lg font-semibold bg-gradient-to-r from-primary to-secondary text-white flex items-center gap-3 justify-center no-underline"
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
+                  containerClassName="rounded-full"
+                  className="bg-background text-foreground flex items-center gap-3 px-8 py-4 text-lg font-semibold"
                 >
                   <Download size={24} />
-                  Download Resume
-                </motion.a>
+                  <span>Download Resume</span>
+                </HoverBorderGradient>
                 
-                <motion.button 
+                <HoverBorderGradient
+                  as="button"
                   onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="glass-card neon-glow px-8 py-4 rounded-full text-lg font-semibold border border-primary text-primary hover:bg-primary hover:text-white transition-all duration-300"
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
+                  containerClassName="rounded-full"
+                  className="bg-background text-foreground flex items-center px-8 py-4 text-lg font-semibold"
                 >
-                  Get In Touch
-                </motion.button>
+                  <span>Get In Touch</span>
+                </HoverBorderGradient>
               </motion.div>
             </div>
           </div>

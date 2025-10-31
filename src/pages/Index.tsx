@@ -10,6 +10,8 @@ import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import ParallaxSection from '@/components/ParallaxSection';
 import useScrollAnimation from '@/hooks/useScrollAnimation';
+import { FloatingNav } from '@/components/ui/floating-navbar';
+import { Home, User, Code, BookOpen, Briefcase, Mail } from 'lucide-react';
 
 const Index = () => {
   useScrollAnimation();
@@ -21,6 +23,16 @@ const Index = () => {
     restDelta: 0.001
   });
 
+  const navItems = [
+    { name: 'Home', link: '#home', icon: <Home className="h-4 w-4" /> },
+    { name: 'About', link: '#about', icon: <User className="h-4 w-4" /> },
+    { name: 'Skills', link: '#skills', icon: <Code className="h-4 w-4" /> },
+    { name: 'Projects', link: '#projects', icon: <BookOpen className="h-4 w-4" /> },
+    { name: 'Education', link: '#education', icon: <BookOpen className="h-4 w-4" /> },
+    { name: 'Experience', link: '#experience', icon: <Briefcase className="h-4 w-4" /> },
+    { name: 'Contact', link: '#contact', icon: <Mail className="h-4 w-4" /> },
+  ];
+
   return (
     <div className="min-h-screen">
       {/* Scroll Progress Bar */}
@@ -30,6 +42,7 @@ const Index = () => {
       />
       
       <Navigation />
+      <FloatingNav navItems={navItems} />
       <Hero />
       
       <ParallaxSection offset={30}>
