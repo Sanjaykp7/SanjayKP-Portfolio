@@ -67,7 +67,7 @@ const Skills = () => {
   };
 
   return (
-    <section id="skills" className="py-20 px-6">
+    <section id="skills" className="relative py-20 px-6">
       <div className="container mx-auto">
         <motion.div 
           className="fade-in"
@@ -111,13 +111,15 @@ const Skills = () => {
                   <img
                     src={skill.logo}
                     alt={`${skill.name} logo`}
-                    width="60"
-                    height="60"
+                    width={60}
+                    height={60}
                     loading="lazy"
+                    decoding="async"
                     className="object-contain mb-3 w-[60px] h-[60px]"
                     onError={(e) => {
-                      console.error(`Failed to load logo: ${skill.logo}`);
-                      e.currentTarget.style.display = 'none';
+                      const target = e.currentTarget as HTMLImageElement;
+                      if (target.src.endsWith('/logos/placeholder.svg')) return;
+                      target.src = '/logos/placeholder.svg';
                     }}
                   />
                   <p className="text-sm sm:text-base font-semibold text-foreground">
