@@ -82,7 +82,7 @@ const Index = () => {
       />
       
       {/* Floating Dock */}
-      <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50">
+      <div className="fixed top-8 left-1/2 -translate-x-1/2 z-50">
         <FloatingDock items={navItems} />
       </div>
 

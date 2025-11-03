@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { BackgroundGradient } from '@/components/ui/background-gradient';
 import certWebProgramming from '@/assets/cert-web-programming.jpg';
 import certJavaScript from '@/assets/cert-javascript.png';
 import certSQL from '@/assets/cert-sql.jpg';
@@ -6,17 +7,14 @@ import certFullStack from '@/assets/cert-fullstack.jpg';
 
 const Skills = () => {
   const skills = [
-    { name: 'HTML', category: 'Frontend', level: 90, icon: '🎨' },
-    { name: 'CSS', category: 'Frontend', level: 85, icon: '💅' },
-    { name: 'JavaScript', category: 'Frontend', level: 88, icon: '⚡' },
-    { name: 'React JS', category: 'Frontend', level: 82, icon: '⚛️' },
-    { name: 'Core Java', category: 'Backend', level: 90, icon: '☕' },
-    { name: 'Advanced Java', category: 'Backend', level: 85, icon: '🚀' },
-    { name: 'APIs', category: 'Backend', level: 80, icon: '🔌' },
-    { name: 'MySQL', category: 'Database', level: 88, icon: '🗄️' },
-    { name: 'Spring', category: 'Framework', level: 85, icon: '🍃' },
-    { name: 'Spring Boot', category: 'Framework', level: 90, icon: '⚙️' },
-    { name: 'Hibernate', category: 'Framework', level: 82, icon: '🔧' }
+    { name: 'HTML', logo: '/logos/html5.svg' },
+    { name: 'CSS', logo: '/logos/css3.svg' },
+    { name: 'JavaScript', logo: '/logos/javascript.svg' },
+    { name: 'React', logo: '/logos/react.svg' },
+    { name: 'Java', logo: '/logos/java.svg' },
+    { name: 'Spring', logo: '/logos/spring.svg' },
+    { name: 'Hibernate', logo: '/logos/hibernate.svg' },
+    { name: 'MySQL', logo: '/logos/mysql.svg' },
   ];
 
   const certifications = [
@@ -45,16 +43,6 @@ const Skills = () => {
       image: certFullStack
     }
   ];
-
-  const getCategoryColor = (category: string) => {
-    switch (category) {
-      case 'Frontend': return 'from-blue-500 to-cyan-500';
-      case 'Backend': return 'from-purple-500 to-pink-500';
-      case 'Database': return 'from-green-500 to-emerald-500';
-      case 'Framework': return 'from-orange-500 to-red-500';
-      default: return 'from-primary to-secondary';
-    }
-  };
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -109,71 +97,28 @@ const Skills = () => {
               Technical Skills
             </motion.h3>
             <motion.div 
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto"
+              className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 max-w-6xl mx-auto justify-items-center"
               variants={containerVariants}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-50px" }}
             >
-              {skills.map((skill, index) => (
-                <motion.div 
+              {skills.map((skill) => (
+                <BackgroundGradient
                   key={skill.name}
-                  className="glass-card p-8 rounded-3xl group relative overflow-hidden"
-                  variants={cardVariants}
-                  whileHover={{ 
-                    scale: 1.05,
-                    rotateY: 5,
-                    transition: { duration: 0.3 }
-                  }}
+                  className="rounded-[20px] flex flex-col items-center justify-center p-6 bg-background dark:bg-card hover:scale-105 transition-transform duration-300 w-[150px] h-[150px]"
                 >
-                  {/* Background Gradient Effect */}
-                  <motion.div 
-                    className={`absolute inset-0 bg-gradient-to-br ${getCategoryColor(skill.category)}`}
-                    initial={{ opacity: 0 }}
-                    whileHover={{ opacity: 0.1 }}
-                    transition={{ duration: 0.3 }}
+                  <img
+                    src={skill.logo}
+                    alt={skill.name}
+                    width={60}
+                    height={60}
+                    className="object-contain mb-3"
                   />
-                  
-                  <div className="relative z-10">
-                    {/* Icon and Name */}
-                    <div className="flex items-center gap-4 mb-6">
-                      <motion.div 
-                        className="text-5xl"
-                        whileHover={{ scale: 1.2, rotate: 360 }}
-                        transition={{ duration: 0.5 }}
-                      >
-                        {skill.icon}
-                      </motion.div>
-                      <div className="flex-1">
-                        <h4 className="font-bold text-xl text-foreground group-hover:text-primary transition-colors duration-300">
-                          {skill.name}
-                        </h4>
-                        <p className="text-sm text-muted-foreground">{skill.category}</p>
-                      </div>
-                    </div>
-                    
-                    {/* Skill Level Bar */}
-                    <div className="space-y-2">
-                      <div className="flex justify-between text-sm">
-                        <span className="text-muted-foreground">Proficiency</span>
-                        <span className="font-semibold text-secondary">{skill.level}%</span>
-                      </div>
-                      <div className="h-3 bg-muted/30 rounded-full overflow-hidden">
-                        <motion.div 
-                          className={`h-full bg-gradient-to-r ${getCategoryColor(skill.category)} rounded-full`}
-                          initial={{ width: 0 }}
-                          whileInView={{ width: `${skill.level}%` }}
-                          viewport={{ once: true }}
-                          transition={{ 
-                            duration: 1.5,
-                            delay: index * 0.1,
-                            ease: "easeOut"
-                          }}
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
+                  <p className="text-sm sm:text-base font-semibold text-foreground">
+                    {skill.name}
+                  </p>
+                </BackgroundGradient>
               ))}
             </motion.div>
           </div>
