@@ -9,22 +9,19 @@ import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import ParallaxSection from '@/components/ParallaxSection';
 import useScrollAnimation from '@/hooks/useScrollAnimation';
+import { FloatingDock } from '@/components/ui/floating-dock';
 import { 
-  Navbar, 
-  NavBody, 
-  NavItems, 
-  MobileNav, 
-  NavbarLogo, 
-  NavbarButton, 
-  MobileNavHeader, 
-  MobileNavToggle, 
-  MobileNavMenu 
-} from '@/components/ui/resizable-navbar';
-import { useState } from 'react';
+  IconHome, 
+  IconUser, 
+  IconCode, 
+  IconBriefcase, 
+  IconSchool, 
+  IconMail,
+  IconFileText
+} from '@tabler/icons-react';
 
 const Index = () => {
   useScrollAnimation();
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
@@ -34,13 +31,46 @@ const Index = () => {
   });
 
   const navItems = [
-    { name: 'Home', link: '#home' },
-    { name: 'About', link: '#about' },
-    { name: 'Skills', link: '#skills' },
-    { name: 'Projects', link: '#projects' },
-    { name: 'Education', link: '#education' },
-    { name: 'Experience', link: '#experience' },
-    { name: 'Contact', link: '#contact' },
+    {
+      title: 'Home',
+      icon: <IconHome className="h-full w-full text-foreground" />,
+      href: '#home',
+    },
+    {
+      title: 'About',
+      icon: <IconUser className="h-full w-full text-foreground" />,
+      href: '#about',
+    },
+    {
+      title: 'Skills',
+      icon: <IconCode className="h-full w-full text-foreground" />,
+      href: '#skills',
+    },
+    {
+      title: 'Projects',
+      icon: <IconBriefcase className="h-full w-full text-foreground" />,
+      href: '#projects',
+    },
+    {
+      title: 'Education',
+      icon: <IconSchool className="h-full w-full text-foreground" />,
+      href: '#education',
+    },
+    {
+      title: 'Experience',
+      icon: <IconBriefcase className="h-full w-full text-foreground" />,
+      href: '#experience',
+    },
+    {
+      title: 'Resume',
+      icon: <IconFileText className="h-full w-full text-foreground" />,
+      href: '/Sanjay_KP_Java_Web_Dev.pdf',
+    },
+    {
+      title: 'Contact',
+      icon: <IconMail className="h-full w-full text-foreground" />,
+      href: '#contact',
+    },
   ];
 
   return (
@@ -51,79 +81,10 @@ const Index = () => {
         style={{ scaleX }}
       />
       
-      {/* Resizable Navbar */}
-      <Navbar>
-        <NavBody>
-          <NavbarLogo />
-          <NavItems items={navItems} />
-          <div className="flex items-center gap-4">
-            <NavbarButton 
-              as="a" 
-              href="/Sanjay_KP_Java_Web_Dev.pdf" 
-              variant="secondary"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Resume
-            </NavbarButton>
-            <NavbarButton 
-              as="a" 
-              href="#contact" 
-              variant="primary"
-            >
-              Get In Touch
-            </NavbarButton>
-          </div>
-        </NavBody>
-
-        <MobileNav>
-          <MobileNavHeader>
-            <NavbarLogo />
-            <MobileNavToggle
-              isOpen={isMobileMenuOpen}
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            />
-          </MobileNavHeader>
-
-          <MobileNavMenu
-            isOpen={isMobileMenuOpen}
-            onClose={() => setIsMobileMenuOpen(false)}
-          >
-            {navItems.map((item, idx) => (
-              <a
-                key={`mobile-link-${idx}`}
-                href={item.link}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="text-white/80 hover:text-white transition-colors w-full"
-              >
-                <span className="block">{item.name}</span>
-              </a>
-            ))}
-            <div className="flex w-full flex-col gap-3 pt-2">
-              <NavbarButton
-                as="a"
-                href="/Sanjay_KP_Java_Web_Dev.pdf"
-                onClick={() => setIsMobileMenuOpen(false)}
-                variant="secondary"
-                className="w-full"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Resume
-              </NavbarButton>
-              <NavbarButton
-                as="a"
-                href="#contact"
-                onClick={() => setIsMobileMenuOpen(false)}
-                variant="primary"
-                className="w-full"
-              >
-                Get In Touch
-              </NavbarButton>
-            </div>
-          </MobileNavMenu>
-        </MobileNav>
-      </Navbar>
+      {/* Floating Dock */}
+      <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50">
+        <FloatingDock items={navItems} />
+      </div>
 
       <Hero />
       
