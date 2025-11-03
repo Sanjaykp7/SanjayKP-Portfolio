@@ -110,10 +110,15 @@ const Skills = () => {
                 >
                   <img
                     src={skill.logo}
-                    alt={skill.name}
-                    width={60}
-                    height={60}
-                    className="object-contain mb-3"
+                    alt={`${skill.name} logo`}
+                    width="60"
+                    height="60"
+                    loading="lazy"
+                    className="object-contain mb-3 w-[60px] h-[60px]"
+                    onError={(e) => {
+                      console.error(`Failed to load logo: ${skill.logo}`);
+                      e.currentTarget.style.display = 'none';
+                    }}
                   />
                   <p className="text-sm sm:text-base font-semibold text-foreground">
                     {skill.name}
