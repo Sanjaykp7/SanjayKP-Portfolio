@@ -13,35 +13,35 @@ const Education = () => {
               <GraduationCap size={32} className="text-white" />
             </div>
             <div>
-              <h3 className="text-2xl md:text-3xl font-bold text-foreground">
+              <h3 className="text-2xl md:text-3xl font-bold text-white">
                 Bachelor of Engineering
               </h3>
-              <h4 className="text-lg text-primary font-semibold">
+              <h4 className="text-lg text-white font-semibold">
                 Computer Science Engineering
               </h4>
             </div>
           </div>
           
-          <p className="text-lg text-foreground">
+          <p className="text-lg text-white">
             Srinivas Institute of Technology
           </p>
           
           <div className="flex flex-wrap items-center gap-3">
-            <Badge variant="outline" className="bg-gradient-to-r from-primary/10 to-secondary/10">
+            <Badge variant="outline" className="bg-gradient-to-r from-primary/10 to-secondary/10 text-white">
               CGPA: 7.3
             </Badge>
-            <span className="text-sm text-muted-foreground">Mangaluru, Karnataka, India</span>
+            <span className="text-sm text-white">Mangaluru, Karnataka, India</span>
           </div>
           
           <div className="mt-6 pt-6 border-t border-border">
-            <h4 className="text-sm font-semibold text-foreground mb-3">
+            <h4 className="text-sm font-semibold text-white mb-3">
               Relevant Coursework:
             </h4>
             <div className="grid grid-cols-2 gap-2">
               {['Data Structures & Algorithms', 'Object-Oriented Programming', 'Database Management Systems', 'Web Technologies', 'Software Engineering', 'Computer Networks'].map((course) => (
                 <div 
                   key={course}
-                  className="glass-card p-2 rounded-lg text-xs text-muted-foreground hover:text-foreground transition-colors duration-300"
+                  className="glass-card p-2 rounded-lg text-xs text-white transition-colors duration-300"
                 >
                   {course}
                 </div>
@@ -60,21 +60,21 @@ const Education = () => {
               <BookOpen size={32} className="text-white" />
             </div>
             <div>
-              <h3 className="text-2xl md:text-3xl font-bold text-foreground">
+              <h3 className="text-2xl md:text-3xl font-bold text-white">
                 PUC
               </h3>
             </div>
           </div>
           
-          <p className="text-lg text-foreground">
+          <p className="text-lg text-white">
             Sri Siddeshwara PU College
           </p>
           
           <div className="flex flex-wrap items-center gap-3">
-            <Badge variant="outline" className="bg-gradient-to-r from-primary/10 to-secondary/10">
+            <Badge variant="outline" className="bg-gradient-to-r from-primary/10 to-secondary/10 text-white">
               77.5%
             </Badge>
-            <span className="text-sm text-muted-foreground">Davanagere, Karnataka, India</span>
+            <span className="text-sm text-white">Davanagere, Karnataka, India</span>
           </div>
         </div>
       ),
@@ -88,21 +88,21 @@ const Education = () => {
               <School size={32} className="text-white" />
             </div>
             <div>
-              <h3 className="text-2xl md:text-3xl font-bold text-foreground">
+              <h3 className="text-2xl md:text-3xl font-bold text-white">
                 SSLC
               </h3>
             </div>
           </div>
           
-          <p className="text-lg text-foreground">
+          <p className="text-lg text-white">
             D.V.S English Medium School
           </p>
           
           <div className="flex flex-wrap items-center gap-3">
-            <Badge variant="outline" className="bg-gradient-to-r from-primary/10 to-secondary/10">
+            <Badge variant="outline" className="bg-gradient-to-r from-primary/10 to-secondary/10 text-white">
               83.20%
             </Badge>
-            <span className="text-sm text-muted-foreground">Chitradurga, Karnataka, India</span>
+            <span className="text-sm text-white">Chitradurga, Karnataka, India</span>
           </div>
         </div>
       ),
