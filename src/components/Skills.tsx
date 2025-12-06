@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import { BackgroundGradient } from '@/components/ui/background-gradient';
 import certWebProgramming from '@/assets/cert-web-programming.jpg';
 import certJavaScript from '@/assets/cert-javascript.png';
 import certSQL from '@/assets/cert-sql.jpg';
@@ -44,171 +43,84 @@ const Skills = () => {
     }
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
-
-  const cardVariants = {
-    hidden: { opacity: 0, y: 50, scale: 0.9 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: {
-        duration: 0.6
-      }
-    }
-  };
-
   return (
-    <section id="skills" className="relative py-20 px-6">
-      <div className="container mx-auto">
-        <motion.div 
-          className="fade-in"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-        >
-          <motion.h2 
-            className="text-4xl md:text-5xl font-bold text-center mb-16 neon-text"
-            initial={{ opacity: 0, y: -30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            Skills & Certifications
-          </motion.h2>
+    <section id="skills" className="py-20 px-6">
+      <div className="container mx-auto max-w-6xl">
+        <div className="fade-in">
+          <h2 className="section-title">
+            Technologies & Framework
+          </h2>
           
           {/* Skills Grid */}
-          <div className="mb-16">
-            <motion.h3 
-              className="text-2xl font-semibold text-center mb-12 text-secondary"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-            >
-              Technical Skills
-            </motion.h3>
-            <motion.div 
-              className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 max-w-6xl mx-auto justify-items-center"
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-50px" }}
-            >
-              {skills.map((skill) => (
-                <BackgroundGradient
-                  key={skill.name}
-                  className="rounded-[20px] flex flex-col items-center justify-center p-6 bg-background dark:bg-card hover:scale-105 transition-transform duration-300 w-[150px] h-[150px]"
-                >
-                  <img
-                    src={skill.logo}
-                    alt={`${skill.name} logo`}
-                    width={60}
-                    height={60}
-                    loading="lazy"
-                    decoding="async"
-                    className="object-contain mb-3 w-[60px] h-[60px]"
-                    onError={(e) => {
-                      const target = e.currentTarget as HTMLImageElement;
-                      if (target.src.endsWith('/logos/placeholder.svg')) return;
-                      target.src = '/logos/placeholder.svg';
-                    }}
-                  />
-                  <p className="text-sm sm:text-base font-semibold text-foreground">
-                    {skill.name}
-                  </p>
-                </BackgroundGradient>
-              ))}
-            </motion.div>
-          </div>
-
-          {/* Certifications Grid */}
-          <div>
-            <motion.h3 
-              className="text-2xl font-semibold text-center mb-12 text-secondary"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-            >
-              Certifications
-            </motion.h3>
-            <motion.div 
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto"
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-50px" }}
-            >
-              {certifications.map((cert, index) => (
-                <motion.div 
-                  key={cert.title}
-                  className="glass-card rounded-3xl group relative overflow-hidden cursor-pointer flex flex-col"
-                  variants={cardVariants}
-                  whileHover={{ 
-                    scale: 1.05,
-                    y: -10,
-                    transition: { duration: 0.3 }
+          <motion.div 
+            className="flex flex-wrap justify-center gap-4 mb-20"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            {skills.map((skill, index) => (
+              <motion.div
+                key={skill.name}
+                className="skill-badge"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.05 }}
+                whileHover={{ scale: 1.05 }}
+              >
+                <img
+                  src={skill.logo}
+                  alt={skill.name}
+                  className="w-6 h-6 object-contain"
+                  onError={(e) => {
+                    const target = e.currentTarget as HTMLImageElement;
+                    if (target.src.endsWith('/logos/placeholder.svg')) return;
+                    target.src = '/logos/placeholder.svg';
                   }}
-                >
-                  {/* Animated Border Glow */}
-                  <motion.div 
-                    className="absolute inset-0 bg-gradient-to-br from-primary via-secondary to-accent opacity-0 group-hover:opacity-20 rounded-3xl"
-                    transition={{ duration: 0.3 }}
+                />
+                <span>{skill.name}</span>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* Certifications */}
+          <h3 className="text-2xl font-semibold text-center mb-12 text-foreground">
+            Certifications
+          </h3>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {certifications.map((cert, index) => (
+              <motion.div 
+                key={cert.title}
+                className="glass-card overflow-hidden group cursor-pointer"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ y: -8 }}
+              >
+                {/* Image */}
+                <div className="h-40 overflow-hidden">
+                  <img 
+                    src={cert.image}
+                    alt={cert.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
-                  
-                  {/* Image Container - 40% */}
-                  <div className="relative h-48 overflow-hidden rounded-t-3xl">
-                    <motion.img 
-                      src={cert.image}
-                      alt={cert.title}
-                      className="w-full h-full object-cover"
-                      whileHover={{ scale: 1.1 }}
-                      transition={{ duration: 0.5 }}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                  </div>
-                  
-                  {/* Content Container - 60% */}
-                  <div className="relative z-10 p-6 flex-1 flex flex-col justify-between">
-                    {/* Animated Gradient Line */}
-                    <motion.div 
-                      className="h-1 bg-gradient-to-r from-primary via-secondary to-accent rounded-full mb-4"
-                      initial={{ scaleX: 0 }}
-                      whileInView={{ scaleX: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.5, delay: index * 0.1 }}
-                      style={{ originX: 0 }}
-                    />
-                    
-                    {/* Content */}
-                    <div className="flex-1">
-                      <h4 className="font-bold text-base text-foreground mb-2 leading-tight group-hover:text-primary transition-colors duration-300">
-                        {cert.title}
-                      </h4>
-                      <p className="text-muted-foreground text-xs font-medium mb-2">{cert.provider}</p>
-                      <p className="text-secondary text-sm font-semibold">Year: {cert.year}</p>
-                    </div>
-                    
-                    {/* Verification Badge */}
-                    <div className="mt-4 inline-flex items-center gap-2 px-3 py-1 bg-primary/10 border border-primary/20 rounded-full text-xs text-primary self-start">
-                      <span className="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
-                      Verified
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </motion.div>
+                </div>
+                
+                {/* Content */}
+                <div className="p-5">
+                  <h4 className="font-bold text-foreground mb-2 leading-tight group-hover:text-primary transition-colors">
+                    {cert.title}
+                  </h4>
+                  <p className="text-sm text-muted-foreground mb-1">{cert.provider}</p>
+                  <p className="text-sm text-primary font-medium">{cert.year}</p>
+                </div>
+              </motion.div>
+            ))}
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

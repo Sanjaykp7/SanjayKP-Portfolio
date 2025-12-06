@@ -1,4 +1,5 @@
-import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
+import { motion } from 'framer-motion';
+import { ExternalLink } from 'lucide-react';
 
 const Projects = () => {
   const projects = [
@@ -28,64 +29,83 @@ const Projects = () => {
 
   return (
     <section id="projects" className="py-20 px-6">
-      <div className="container mx-auto">
+      <div className="container mx-auto max-w-6xl">
         <div className="fade-in">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 neon-text">
+          <h2 className="section-title">
             Projects
           </h2>
           
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {projects.map((project, index) => (
-              <CardContainer key={project.title} className="inter-var">
-                <CardBody className="glass-card relative group/card w-auto sm:w-[30rem] h-auto rounded-3xl p-8 border border-primary/20">
-                  <CardItem
-                    translateZ="50"
-                    className="text-2xl font-bold text-foreground"
-                  >
-                    {project.title}
-                  </CardItem>
+              <motion.div
+                key={project.title}
+                className="project-card"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                {/* Project Preview Area */}
+                <div className="h-48 bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center border-b border-border">
+                  <span className="text-4xl font-bold text-primary/30">{project.title.charAt(0)}</span>
+                </div>
+                
+                {/* Content */}
+                <div className="p-6 space-y-4">
+                  <div className="flex items-start justify-between gap-4">
+                    <h3 className="text-xl font-bold text-foreground">
+                      {project.title}
+                    </h3>
+                    <button className="p-2 rounded-lg bg-muted hover:bg-primary hover:text-white transition-all">
+                      <ExternalLink size={18} />
+                    </button>
+                  </div>
                   
-                  <CardItem
-                    as="p"
-                    translateZ="60"
-                    className="text-muted-foreground leading-relaxed mt-4 max-w-sm"
-                  >
+                  <p className="text-muted-foreground text-sm leading-relaxed">
                     {project.description}
-                  </CardItem>
+                  </p>
                   
-                  <CardItem translateZ="80" className="w-full mt-6">
-                    <div>
-                      <h4 className="text-lg font-semibold text-secondary mb-3">Key Features:</h4>
-                      <ul className="space-y-2">
-                        {project.features.map((feature, featureIndex) => (
-                          <li key={featureIndex} className="flex items-center text-muted-foreground">
-                            <div className="w-2 h-2 bg-gradient-to-r from-primary to-secondary rounded-full mr-3"></div>
-                            {feature}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </CardItem>
+                  {/* Features */}
+                  <div>
+                    <h4 className="text-sm font-semibold text-foreground mb-2">Key Features:</h4>
+                    <ul className="grid grid-cols-2 gap-2">
+                      {project.features.map((feature) => (
+                        <li key={feature} className="flex items-center text-sm text-muted-foreground">
+                          <div className="w-1.5 h-1.5 bg-primary rounded-full mr-2"></div>
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                   
-                  <CardItem translateZ="100" className="w-full mt-6">
-                    <div>
-                      <h4 className="text-lg font-semibold text-secondary mb-3">Technologies Used:</h4>
-                      <div className="flex flex-wrap gap-2">
-                        {project.technologies.map((tech, techIndex) => (
-                          <span 
-                            key={techIndex}
-                            className="px-3 py-1 bg-gradient-to-r from-primary/20 to-secondary/20 border border-primary/30 rounded-full text-sm text-foreground"
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </CardItem>
-                </CardBody>
-              </CardContainer>
+                  {/* Technologies */}
+                  <div className="flex flex-wrap gap-2 pt-2">
+                    {project.technologies.map((tech) => (
+                      <span 
+                        key={tech}
+                        className="px-3 py-1 text-xs font-medium bg-primary/10 text-primary border border-primary/20 rounded-full"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
             ))}
           </div>
+          
+          {/* See More Button */}
+          <motion.div 
+            className="flex justify-center mt-12"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+          >
+            <button className="btn-secondary">
+              SEE MORE
+            </button>
+          </motion.div>
         </div>
       </div>
     </section>
