@@ -1,123 +1,107 @@
-import { GraduationCap, School, BookOpen } from 'lucide-react';
-import { Badge } from '@/components/ui/badge';
-import { Timeline } from '@/components/ui/timeline';
+import { motion } from 'framer-motion';
+import { GraduationCap, BookOpen, School } from 'lucide-react';
 
 const Education = () => {
   const educationData = [
     {
-      title: '2021 – 2025',
-      content: (
-        <div className="space-y-4">
-          <div className="flex items-center gap-4 mb-4">
-            <div className="w-16 h-16 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center">
-              <GraduationCap size={32} className="text-white" />
-            </div>
-            <div>
-              <h3 className="text-2xl md:text-3xl font-bold text-white">
-                Bachelor of Engineering
-              </h3>
-              <h4 className="text-lg text-white font-semibold">
-                Computer Science Engineering
-              </h4>
-            </div>
-          </div>
-          
-          <p className="text-lg text-white">
-            Srinivas Institute of Technology
-          </p>
-          
-          <div className="flex flex-wrap items-center gap-3">
-            <Badge variant="outline" className="bg-gradient-to-r from-primary/10 to-secondary/10 text-white">
-              CGPA: 7.3
-            </Badge>
-            <span className="text-sm text-white">Mangaluru, Karnataka, India</span>
-          </div>
-          
-          <div className="mt-6 pt-6 border-t border-border">
-            <h4 className="text-sm font-semibold text-white mb-3">
-              Relevant Coursework:
-            </h4>
-            <div className="grid grid-cols-2 gap-2">
-              {['Data Structures & Algorithms', 'Object-Oriented Programming', 'Database Management Systems', 'Web Technologies', 'Software Engineering', 'Computer Networks'].map((course) => (
-                <div 
-                  key={course}
-                  className="glass-card p-2 rounded-lg text-xs text-white transition-colors duration-300"
-                >
-                  {course}
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      ),
+      period: '2021 – 2025',
+      degree: 'Bachelor of Engineering',
+      field: 'Computer Science Engineering',
+      institution: 'Srinivas Institute of Technology',
+      location: 'Mangaluru, Karnataka, India',
+      grade: 'CGPA: 7.3',
+      icon: GraduationCap,
+      color: 'from-primary to-secondary',
+      courses: ['Data Structures & Algorithms', 'Object-Oriented Programming', 'Database Management Systems', 'Web Technologies', 'Software Engineering', 'Computer Networks']
     },
     {
-      title: '2019 – 2021',
-      content: (
-        <div className="space-y-4">
-          <div className="flex items-center gap-4 mb-4">
-            <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center">
-              <BookOpen size={32} className="text-white" />
-            </div>
-            <div>
-              <h3 className="text-2xl md:text-3xl font-bold text-white">
-                PUC
-              </h3>
-            </div>
-          </div>
-          
-          <p className="text-lg text-white">
-            Sri Siddeshwara PU College
-          </p>
-          
-          <div className="flex flex-wrap items-center gap-3">
-            <Badge variant="outline" className="bg-gradient-to-r from-primary/10 to-secondary/10 text-white">
-              77.5%
-            </Badge>
-            <span className="text-sm text-white">Davanagere, Karnataka, India</span>
-          </div>
-        </div>
-      ),
+      period: '2019 – 2021',
+      degree: 'PUC',
+      institution: 'Sri Siddeshwara PU College',
+      location: 'Davanagere, Karnataka, India',
+      grade: '77.5%',
+      icon: BookOpen,
+      color: 'from-purple-500 to-pink-500',
     },
     {
-      title: '2019',
-      content: (
-        <div className="space-y-4">
-          <div className="flex items-center gap-4 mb-4">
-            <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center">
-              <School size={32} className="text-white" />
-            </div>
-            <div>
-              <h3 className="text-2xl md:text-3xl font-bold text-white">
-                SSLC
-              </h3>
-            </div>
-          </div>
-          
-          <p className="text-lg text-white">
-            D.V.S English Medium School
-          </p>
-          
-          <div className="flex flex-wrap items-center gap-3">
-            <Badge variant="outline" className="bg-gradient-to-r from-primary/10 to-secondary/10 text-white">
-              83.20%
-            </Badge>
-            <span className="text-sm text-white">Chitradurga, Karnataka, India</span>
-          </div>
-        </div>
-      ),
+      period: '2019',
+      degree: 'SSLC',
+      institution: 'D.V.S English Medium School',
+      location: 'Chitradurga, Karnataka, India',
+      grade: '83.20%',
+      icon: School,
+      color: 'from-blue-500 to-cyan-500',
     },
   ];
 
   return (
     <section id="education" className="py-20 px-6">
-      <div className="container mx-auto">
+      <div className="container mx-auto max-w-4xl">
         <div className="fade-in">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 neon-text">
+          <h2 className="section-title">
             Education
           </h2>
           
-          <Timeline data={educationData} />
+          <div className="space-y-6">
+            {educationData.map((edu, index) => (
+              <motion.div
+                key={edu.period}
+                className="glass-card p-6 md:p-8"
+                initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <div className="flex items-start gap-6">
+                  {/* Icon */}
+                  <div className={`flex-shrink-0 w-14 h-14 rounded-xl bg-gradient-to-br ${edu.color} flex items-center justify-center`}>
+                    <edu.icon size={28} className="text-white" />
+                  </div>
+                  
+                  {/* Content */}
+                  <div className="flex-1 space-y-3">
+                    <div className="flex flex-wrap items-center justify-between gap-2">
+                      <h3 className="text-xl md:text-2xl font-bold text-foreground">
+                        {edu.degree}
+                      </h3>
+                      <span className="px-3 py-1 text-sm font-medium bg-primary/10 text-primary border border-primary/20 rounded-full">
+                        {edu.grade}
+                      </span>
+                    </div>
+                    
+                    {edu.field && (
+                      <p className="text-lg text-primary font-medium">{edu.field}</p>
+                    )}
+                    
+                    <p className="text-foreground font-medium">{edu.institution}</p>
+                    
+                    <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
+                      <span>{edu.period}</span>
+                      <span>•</span>
+                      <span>{edu.location}</span>
+                    </div>
+                    
+                    {/* Courses */}
+                    {edu.courses && (
+                      <div className="pt-4 border-t border-border mt-4">
+                        <h4 className="text-sm font-semibold text-foreground mb-3">Relevant Coursework:</h4>
+                        <div className="flex flex-wrap gap-2">
+                          {edu.courses.map((course) => (
+                            <span 
+                              key={course}
+                              className="px-3 py-1 text-xs bg-muted text-muted-foreground rounded-lg"
+                            >
+                              {course}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
