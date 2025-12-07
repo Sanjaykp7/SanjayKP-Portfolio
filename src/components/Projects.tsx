@@ -1,8 +1,22 @@
 import { motion } from 'framer-motion';
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink, Github } from 'lucide-react';
+import freshbitesPreview from '@/assets/freshbites-preview.png';
 
 const Projects = () => {
   const projects = [
+    {
+      title: 'FreshBites – Online Food Ordering Web Application',
+      description: 'A full-stack food ordering web application using Java, JEE, JSP, Servlets, and DAO Design Pattern, enabling menu browsing, cart management, and secure checkout functionality with MVC architecture and Hibernate ORM.',
+      technologies: ['Java', 'JEE', 'JSP', 'Servlets', 'Hibernate', 'MySQL', 'HTML/CSS'],
+      features: [
+        'Menu browsing & cart management',
+        'User authentication & sessions',
+        'Order checkout flow',
+        'Profile management'
+      ],
+      image: freshbitesPreview,
+      github: 'https://github.com/Sanjaykp7/FreshBites-FullStack'
+    },
     {
       title: 'Payroll Management System',
       description: 'A Java-based application designed to automate payroll processes, calculate salaries, manage employee details, and generate reports efficiently.',
@@ -46,8 +60,16 @@ const Projects = () => {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
                 {/* Project Preview Area */}
-                <div className="h-48 bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center border-b border-border">
-                  <span className="text-4xl font-bold text-primary/30">{project.title.charAt(0)}</span>
+                <div className="h-48 bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center border-b border-border overflow-hidden">
+                  {project.image ? (
+                    <img 
+                      src={project.image} 
+                      alt={project.title}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <span className="text-4xl font-bold text-primary/30">{project.title.charAt(0)}</span>
+                  )}
                 </div>
                 
                 {/* Content */}
@@ -56,9 +78,21 @@ const Projects = () => {
                     <h3 className="text-xl font-bold text-foreground">
                       {project.title}
                     </h3>
-                    <button className="p-2 rounded-lg bg-muted hover:bg-primary hover:text-white transition-all">
-                      <ExternalLink size={18} />
-                    </button>
+                    <div className="flex gap-2">
+                      {project.github && (
+                        <a 
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="p-2 rounded-lg bg-muted hover:bg-primary hover:text-white transition-all"
+                        >
+                          <Github size={18} />
+                        </a>
+                      )}
+                      <button className="p-2 rounded-lg bg-muted hover:bg-primary hover:text-white transition-all">
+                        <ExternalLink size={18} />
+                      </button>
+                    </div>
                   </div>
                   
                   <p className="text-muted-foreground text-sm leading-relaxed">
