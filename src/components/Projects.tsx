@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion';
 import { ExternalLink, Github } from 'lucide-react';
 import freshbitesPreview from '@/assets/freshbites-preview.png';
+import payrollPreview from '@/assets/payroll-preview.png';
+import hotelBookingPreview from '@/assets/hotel-booking-preview.png';
 
 const Projects = () => {
   const projects = [
@@ -26,7 +28,8 @@ const Projects = () => {
         'Employee management',
         'Report generation',
         'Admin dashboard'
-      ]
+      ],
+      image: payrollPreview
     },
     {
       title: 'Hotel Booking Management System',
@@ -37,7 +40,8 @@ const Projects = () => {
         'Reservation management', 
         'Admin panel',
         'Customer portal'
-      ]
+      ],
+      image: hotelBookingPreview
     }
   ];
 
