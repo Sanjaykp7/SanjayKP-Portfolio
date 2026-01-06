@@ -22,7 +22,7 @@ const Projects = () => {
     {
       title: 'Payroll Management System',
       description: 'A Java-based application designed to automate payroll processes, calculate salaries, manage employee details, and generate reports efficiently.',
-      technologies: ['Java', 'MySQL', 'Spring Boot', 'Hibernate'],
+      technologies: ['Java', 'JEE', 'JSP', 'JDBC', 'MySQL', 'HTML/CSS'],
       features: [
         'Automated salary calculations',
         'Employee management',
@@ -34,7 +34,7 @@ const Projects = () => {
     {
       title: 'Hotel Booking Management System',
       description: 'A full-stack project that allows customers to book hotels online, manage reservations, and provides admin functionalities for hotel management.',
-      technologies: ['Java', 'JavaScript', 'MySQL', 'Spring', 'HTML/CSS'],
+      technologies: ['Java Full Stack'],
       features: [
         'Online booking system',
         'Reservation management', 
