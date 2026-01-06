@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import certWebProgramming from '@/assets/cert-web-programming.jpg';
 import certJavaScript from '@/assets/cert-javascript.png';
 import certSQL from '@/assets/cert-sql.jpg';
-import certFullStack from '@/assets/cert-fullstack.jpg';
+import certTapAcademy from '@/assets/cert-tap-academy.jpg';
 
 const Skills = () => {
   const skills = [
@@ -36,10 +36,10 @@ const Skills = () => {
       image: certSQL
     },
     {
-      title: 'Full Stack Developer',
-      provider: 'Samagra Technologies',
+      title: 'Full Stack Web Development',
+      provider: 'Tap Academy',
       year: '2025',
-      image: certFullStack
+      image: certTapAcademy
     }
   ];
 

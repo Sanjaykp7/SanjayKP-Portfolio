@@ -7,17 +7,8 @@ import Education from '@/components/Education';
 import Experience from '@/components/Experience';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
+import Navbar from '@/components/Navbar';
 import useScrollAnimation from '@/hooks/useScrollAnimation';
-import { FloatingDock } from '@/components/ui/floating-dock';
-import { 
-  IconHome, 
-  IconUser, 
-  IconCode, 
-  IconBriefcase, 
-  IconSchool, 
-  IconMail,
-  IconFileText
-} from '@tabler/icons-react';
 
 const Index = () => {
   useScrollAnimation();
@@ -29,61 +20,16 @@ const Index = () => {
     restDelta: 0.001
   });
 
-  const navItems = [
-    {
-      title: 'Home',
-      icon: <IconHome className="h-full w-full text-foreground" />,
-      href: '#home',
-    },
-    {
-      title: 'About',
-      icon: <IconUser className="h-full w-full text-foreground" />,
-      href: '#about',
-    },
-    {
-      title: 'Skills',
-      icon: <IconCode className="h-full w-full text-foreground" />,
-      href: '#skills',
-    },
-    {
-      title: 'Projects',
-      icon: <IconBriefcase className="h-full w-full text-foreground" />,
-      href: '#projects',
-    },
-    {
-      title: 'Education',
-      icon: <IconSchool className="h-full w-full text-foreground" />,
-      href: '#education',
-    },
-    {
-      title: 'Experience',
-      icon: <IconBriefcase className="h-full w-full text-foreground" />,
-      href: '#experience',
-    },
-    {
-      title: 'Resume',
-      icon: <IconFileText className="h-full w-full text-foreground" />,
-      href: '/Sanjay_KP_Java_Web_Dev.pdf',
-    },
-    {
-      title: 'Contact',
-      icon: <IconMail className="h-full w-full text-foreground" />,
-      href: '#contact',
-    },
-  ];
-
   return (
     <div className="min-h-screen">
+      {/* Navbar */}
+      <Navbar />
+      
       {/* Scroll Progress Bar */}
       <motion.div
         className="fixed top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-primary to-accent z-[60] origin-left"
         style={{ scaleX }}
       />
-      
-      {/* Floating Dock */}
-      <div className="fixed top-6 left-1/2 -translate-x-1/2 z-50">
-        <FloatingDock items={navItems} />
-      </div>
 
       <Hero />
       <About />
