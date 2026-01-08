@@ -4,7 +4,7 @@
 # Glass Effect Portfolio 🌟
 
 🔗 **Live Demo:** https://glass-effect-sanjay-folio.lovable.app/  
-💻 **Repository:** https://github.com/your-username/your-repo-name
+💻 **Repository:** https://github.com/Sanjaykp7/Sanjaykp-portfolio
 
 ---
 ## 🚀 About
